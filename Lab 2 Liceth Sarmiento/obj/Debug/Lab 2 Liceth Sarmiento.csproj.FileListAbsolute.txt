@@ -9,3 +9,14 @@ C:\Users\Liceth\source\repos\Lab 2 Liceth Sarmiento\Lab 2 Liceth Sarmiento\obj\D
 C:\Users\Liceth\source\repos\Lab 2 Liceth Sarmiento\Lab 2 Liceth Sarmiento\obj\Debug\Lab 2 Liceth Sarmiento.csproj.CoreCompileInputs.cache
 C:\Users\Liceth\source\repos\Lab 2 Liceth Sarmiento\Lab 2 Liceth Sarmiento\obj\Debug\Lab 2 Liceth Sarmiento.exe
 C:\Users\Liceth\source\repos\Lab 2 Liceth Sarmiento\Lab 2 Liceth Sarmiento\obj\Debug\Lab 2 Liceth Sarmiento.pdb
+C:\Users\Liceth\Documents\Lab2-Logica1\Lab 2 Liceth Sarmiento\bin\Debug\Lab 2 Liceth Sarmiento.exe.config
+C:\Users\Liceth\Documents\Lab2-Logica1\Lab 2 Liceth Sarmiento\bin\Debug\Lab 2 Liceth Sarmiento.exe
+C:\Users\Liceth\Documents\Lab2-Logica1\Lab 2 Liceth Sarmiento\bin\Debug\Lab 2 Liceth Sarmiento.pdb
+C:\Users\Liceth\Documents\Lab2-Logica1\Lab 2 Liceth Sarmiento\obj\Debug\Lab 2 Liceth Sarmiento.csproj.AssemblyReference.cache
+C:\Users\Liceth\Documents\Lab2-Logica1\Lab 2 Liceth Sarmiento\obj\Debug\Lab 2 Liceth Sarmiento.csproj.SuggestedBindingRedirects.cache
+C:\Users\Liceth\Documents\Lab2-Logica1\Lab 2 Liceth Sarmiento\obj\Debug\Lab_2_Liceth_Sarmiento.Form1.resources
+C:\Users\Liceth\Documents\Lab2-Logica1\Lab 2 Liceth Sarmiento\obj\Debug\Lab_2_Liceth_Sarmiento.Properties.Resources.resources
+C:\Users\Liceth\Documents\Lab2-Logica1\Lab 2 Liceth Sarmiento\obj\Debug\Lab 2 Liceth Sarmiento.csproj.GenerateResource.cache
+C:\Users\Liceth\Documents\Lab2-Logica1\Lab 2 Liceth Sarmiento\obj\Debug\Lab 2 Liceth Sarmiento.csproj.CoreCompileInputs.cache
+C:\Users\Liceth\Documents\Lab2-Logica1\Lab 2 Liceth Sarmiento\obj\Debug\Lab 2 Liceth Sarmiento.exe
+C:\Users\Liceth\Documents\Lab2-Logica1\Lab 2 Liceth Sarmiento\obj\Debug\Lab 2 Liceth Sarmiento.pdb

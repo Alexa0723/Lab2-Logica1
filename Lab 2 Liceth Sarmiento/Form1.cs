@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,14 +24,20 @@ namespace Lab_2_Liceth_Sarmiento
             string ecuacion1 = textBox1.Text.Trim();
             string ecuacion2 = textBox2.Text.Trim();
 
+
+
             if (!validarFunciones(ecuacion1) || !validarFunciones(ecuacion2))
             {
-                solucion.Text = "Piense en lo que ingresó y vuelva a intentarlo.";
+                solucion.Text = "Ingrese una funcion, por favor y gracias.";
                 return;
             }
 
             bool f1 = ObtenerVal(ecuacion1, out double m1, out double b1);
             bool f2 = ObtenerVal(ecuacion2, out double m2, out double b2);
+            
+            //las condicionales para indicarle al usuario si las funciones que ingreso son validas, son paralelas, iguales,
+            //perpendiculares o donde se interseca
+            
 
             if (!f1 || !f2)
             {
@@ -40,7 +47,7 @@ namespace Lab_2_Liceth_Sarmiento
 
             if (m1 == m2)
             {
-                solucion.Text = b1 == b2 ? "Las líneas son idénticas." : "Las líneas son paralelas.";
+                solucion.Text = b1 == b2 ? "Las líneas son iguales." : "Las líneas son paralelas.";
             }
             else if (m1 * m2 + 1 == 0)
             {
@@ -53,12 +60,13 @@ namespace Lab_2_Liceth_Sarmiento
                 solucion.Text = $"Las líneas se intersectan en: ({x} , {y})";
             }
         }
-
+        //funcion me valida si no cumple con ser una de las funciones, si no cumple queda el texto en azul ya cuando cumple
+        //que sea una de las funciones se transforma a color negro
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             if (!validarFunciones(textBox1.Text))
             {
-                textBox1.ForeColor = Color.Black;
+                textBox1.ForeColor = Color.Blue;
             }
             else
             {
@@ -77,18 +85,21 @@ namespace Lab_2_Liceth_Sarmiento
         {
 
         }
-
+        //funcion me valida si no cumple con ser una de las funciones, si no cumple queda el texto en azul ya cuando cumple
+        //que sea una de las funciones se transforma a color negro
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             if (!validarFunciones(textBox1.Text))
             {
-                textBox1.ForeColor = Color.Black;
+                textBox1.ForeColor = Color.Blue;
             }
             else
             {
                 textBox1.ForeColor = Color.Black;
             }
         }
+        // eliminamos espacios en blaco
+        // funcion me valida si lo que me ingresaron es una de las 2 funciones( punto pendiente o pendiente intercepto)
         private bool validarFunciones(string funciones)
         {
             funciones = funciones.Replace(" ", String.Empty);
@@ -99,6 +110,8 @@ namespace Lab_2_Liceth_Sarmiento
             return Regex.IsMatch(funciones, puntoPendiente, RegexOptions.IgnoreCase) ||
                    Regex.IsMatch(funciones, pendiIntercepto, RegexOptions.IgnoreCase);
         }
+        //funcion para extraer valores
+        //elimina espacios en blanco
         private bool ObtenerVal(string formula, out double m, out double b)
         {
             m = 0;
@@ -113,7 +126,7 @@ namespace Lab_2_Liceth_Sarmiento
 
             return false;
         }
-
+        // funcion para extraer valores de la formula pendiente intercepto
         private bool extraerValPenInter (string formula, out double m, out double b)
         {
             m = 0;
@@ -129,7 +142,7 @@ namespace Lab_2_Liceth_Sarmiento
 
             return false;
         }
-
+        // funcion para extraer valores de la funcion punto pendiente
         private bool extraerValPuntoPendiente(string formula, out double m, out double b)
         {
             m = 0;
