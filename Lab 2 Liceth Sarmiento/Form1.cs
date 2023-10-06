@@ -23,8 +23,8 @@ namespace Lab_2_Liceth_Sarmiento
         {
             string ecuacion1 = textBox1.Text.Trim();
             string ecuacion2 = textBox2.Text.Trim();
-
-
+            
+           
 
             if (!validarFunciones(ecuacion1) || !validarFunciones(ecuacion2))
             {
@@ -104,10 +104,12 @@ namespace Lab_2_Liceth_Sarmiento
         {
             funciones = funciones.Replace(" ", String.Empty);
 
-            string puntoPendiente = @"^y=(-?\d*\.?\d*)x([+\-]\d*)?$";
-            string pendiIntercepto = @"^y([+\-]\d*\.?\d*)=(-?\d*\.?\d*)\(x([+\-]\d*\.?\d*)\)$";
+            string simple = @"^y=x$"; // Nueva expresión regular para y=x
+            string puntoPendiente = @"^y=(-?\d*,?\d*|-?\d+/\d+)x([+\-]\d*,?\d*|-?\d+/\d+)?$";
+            string pendiIntercepto = @"^y([+\-]\d*,?\d*|-?\d+/\d+)=(-?\d*,?\d*|-?\d+/\d+)\(x([+\-]\d*,?\d*|-?\d+/\d+)\)$";
 
-            return Regex.IsMatch(funciones, puntoPendiente, RegexOptions.IgnoreCase) ||
+            return Regex.IsMatch(funciones, simple, RegexOptions.IgnoreCase) ||
+                   Regex.IsMatch(funciones, puntoPendiente, RegexOptions.IgnoreCase) ||
                    Regex.IsMatch(funciones, pendiIntercepto, RegexOptions.IgnoreCase);
         }
         //funcion para extraer valores
@@ -116,10 +118,16 @@ namespace Lab_2_Liceth_Sarmiento
         {
             m = 0;
             b = 0;
-            formula = formula.ToLower().Replace(" ", "");
 
-            if (extraerValPenInter(formula, out m, out b) ||
-                extraerValPuntoPendiente(formula, out m, out b))
+            var matchSimple = Regex.Match(formula, @"^y=x$"); // Nueva validación para y=x
+            if (matchSimple.Success)
+            {
+                m = 1;
+                b = 0;
+                return true;
+            }
+            else if (extraerValPenInter(formula, out m, out b) ||
+                     extraerValPuntoPendiente(formula, out m, out b))
             {
                 return true;
             }
@@ -132,11 +140,11 @@ namespace Lab_2_Liceth_Sarmiento
             m = 0;
             b = 0;
 
-            var match = Regex.Match(formula, @"y=(-?\d*\.?\d*)x([+\-]\d*\.?\d*)?$");
+            var match = Regex.Match(formula, @"^y=(-?\d*,?\d*|-?\d+/\d+)x([+\-]\d*,?\d*|-?\d+/\d+)?$");
             if (match.Success)
             {
-                m = double.Parse(match.Groups[1].Value);
-                b = match.Groups[2].Success ? double.Parse(match.Groups[2].Value) : 0;
+                m = ConvertirFraccionADecimal(match.Groups[1].Value);
+                b = match.Groups[2].Success ? ConvertirFraccionADecimal(match.Groups[2].Value) : 0;
                 return true;
             }
 
@@ -148,12 +156,12 @@ namespace Lab_2_Liceth_Sarmiento
             m = 0;
             b = 0;
 
-            var match = Regex.Match(formula, @"y([+\-]\d*\.?\d*)=(-?\d*\.?\d*)\(x([+\-]\d*\.?\d*)\)$");
+            var match = Regex.Match(formula, @"^y([+\-]\d*,?\d*|-?\d+/\d+)=(-?\d*,?\d*|-?\d+/\d+)\(x([+\-]\d*,?\d*|-?\d+/\d+)\)$");
             if (match.Success)
             {
-                double y1 = double.Parse(match.Groups[1].Value);
-                m = double.Parse(match.Groups[2].Value);
-                double x1 = double.Parse(match.Groups[3].Value);
+                double y1 = ConvertirFraccionADecimal(match.Groups[1].Value);
+                m = ConvertirFraccionADecimal(match.Groups[2].Value);
+                double x1 = ConvertirFraccionADecimal(match.Groups[3].Value);
                 b = y1 - m * x1;
                 return true;
             }
@@ -164,6 +172,15 @@ namespace Lab_2_Liceth_Sarmiento
         private void solucion_Click(object sender, EventArgs e)
         {
 
+        }
+        private double ConvertirFraccionADecimal(string valor)
+        {
+            if (valor.Contains("/"))
+            {
+                var partes = valor.Split('/');
+                return double.Parse(partes[0].Replace(',', '.')) / double.Parse(partes[1].Replace(',', '.'));
+            }
+            return double.Parse(valor.Replace(',', '.'));
         }
     }
 

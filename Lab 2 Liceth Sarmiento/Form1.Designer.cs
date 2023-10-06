@@ -95,11 +95,11 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.LightBlue;
             this.label2.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.label2.Location = new System.Drawing.Point(211, 37);
+            this.label2.Location = new System.Drawing.Point(131, 41);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(193, 16);
+            this.label2.Size = new System.Drawing.Size(379, 16);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Ingrese su función lineal #1 y #2";
+            this.label2.Text = "Ingrese 2 funciones lineales ya se de la forma 1 o de la forma 2";
             // 
             // label3
             // 
@@ -160,7 +160,9 @@
             // solucion
             // 
             this.solucion.AutoSize = true;
+            this.solucion.BackColor = System.Drawing.Color.LightBlue;
             this.solucion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.solucion.ForeColor = System.Drawing.SystemColors.Desktop;
             this.solucion.Location = new System.Drawing.Point(212, 287);
             this.solucion.Name = "solucion";
             this.solucion.Size = new System.Drawing.Size(14, 20);
